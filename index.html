@@ -1,14 +1,435 @@
+Kopiere alles in eine Datei namens **`index.html`** und öffne sie im Browser. CSS und JavaScript sind bereits enthalten.
+
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sportblick – Anmeldung</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f3ed;
+      color: #17231e;
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      padding: 20px;
+      background: #102c25;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    main {
+      max-width: 750px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #102c25;
+      font-size: clamp(36px, 8vw, 60px);
+      line-height: 1.1;
+    }
+
+    h1 span {
+      color: #78933e;
+    }
+
+    .intro {
+      margin-bottom: 30px;
+      color: #647168;
+    }
+
+    section {
+      margin-bottom: 20px;
+      padding: 25px;
+      background: white;
+      border: 1px solid #dfe4dc;
+      border-radius: 12px;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .beschreibung {
+      margin: 0 0 20px;
+      color: #647168;
+      font-size: 14px;
+    }
+
+    .felder {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      font: inherit;
+    }
+
+    input:not([type="checkbox"]),
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cdd6ca;
+      border-radius: 6px;
+      background: #fafbf8;
+    }
+
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #9bb955;
+      outline-offset: 2px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .foto-bereich {
+      padding: 35px 20px;
+      margin-bottom: 20px;
+      border: 2px dashed #b6c4ad;
+      border-radius: 8px;
+      background: #f6f9f0;
+      text-align: center;
+    }
+
+    .foto-bereich label {
+      font-size: 18px;
+    }
+
+    .foto-bereich p {
+      color: #647168;
+      font-size: 13px;
+    }
+
+    #vorschau {
+      display: block;
+      max-width: 100%;
+      max-height: 350px;
+      margin: 20px auto 0;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
+    #vorschau[hidden] {
+      display: none;
+    }
+
+    fieldset {
+      margin: 25px 0;
+      padding: 0;
+      border: none;
+    }
+
+    legend {
+      margin-bottom: 12px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .tage {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tage label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 12px;
+      border: 1px solid #cdd6ca;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .tage input {
+      accent-color: #102c25;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #102c25;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #24513e;
+    }
+
+    #meldung {
+      color: #315c3c;
+      text-align: center;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      color: #647168;
+      font-size: 13px;
+    }
+
+    @media (max-width: 550px) {
+      .felder {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-   <h1>Halllo hallo</h1> 
-   <p>hi hihihih ihihihiihi hihihi hi hihi</p>
-   <script>src="script.js"</script>
+  <header>SPORTBLICK</header>
+
+  <main>
+    <h1>Fang den<br><span>Moment ein.</span></h1>
+
+    <p class="intro">
+      Melde dich als Sportfotograf:in an und zeig uns deinen
+      Blick auf den Sport.
+    </p>
+
+    <form id="anmeldung">
+      <section>
+        <h2>01 · Über dich</h2>
+        <p class="beschreibung">
+          Damit wir dich erreichen können.
+        </p>
+
+        <div class="felder">
+          <div>
+            <label for="nachname">Nachname *</label>
+            <input
+              type="text"
+              id="nachname"
+              name="nachname"
+              autocomplete="family-name"
+              required
+            >
+          </div>
+
+          <div>
+            <label for="vorname">Vorname *</label>
+            <input
+              type="text"
+              id="vorname"
+              name="vorname"
+              autocomplete="given-name"
+              required
+            >
+          </div>
+
+          <div>
+            <label for="email">E-Mail-Adresse *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div>
+            <label for="sportart">Lieblingssportart *</label>
+            <select id="sportart" name="sportart" required>
+              <option value="">Bitte auswählen</option>
+              <option>Fussball</option>
+              <option>Basketball</option>
+              <option>Volleyball</option>
+              <option>Leichtathletik</option>
+              <option>Eishockey</option>
+              <option>Andere</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>02 · Dein Sportfoto</h2>
+        <p class="beschreibung">
+          Zeig uns ein Foto, auf das du stolz bist.
+        </p>
+
+        <div class="foto-bereich">
+          <label for="foto">Wähle dein Sportfoto</label>
+          <p id="foto-hinweis">JPG oder PNG · maximal 10 MB · optional</p>
+
+          <input
+            type="file"
+            id="foto"
+            name="foto"
+            accept="image/jpeg,image/png"
+            aria-describedby="foto-hinweis"
+          >
+
+          <img id="vorschau" alt="Vorschau deines Sportfotos" hidden>
+          <p id="foto-fehler" role="alert"></p>
+        </div>
+
+        <label for="geschichte">
+          Welche Geschichte erzählt dein Foto?
+        </label>
+        <textarea
+          id="geschichte"
+          name="geschichte"
+          placeholder="Was macht diesen Moment für dich besonders?"
+        ></textarea>
+      </section>
+
+      <section>
+        <h2>03 · Dein Einsatz</h2>
+        <p class="beschreibung">
+          Wo und wann bist du mit deiner Kamera unterwegs?
+        </p>
+
+        <label for="ort">Wo fotografierst du am liebsten?</label>
+        <input
+          type="text"
+          id="ort"
+          name="ort"
+          placeholder="Zum Beispiel am Spielfeldrand oder in der Halle"
+        >
+
+        <fieldset>
+          <legend>Wann bist du verfügbar?</legend>
+
+          <div class="tage">
+            <label>
+              <input type="checkbox" name="tage" value="Montag"> Mo
+            </label>
+            <label>
+              <input type="checkbox" name="tage" value="Dienstag"> Di
+            </label>
+            <label>
+              <input type="checkbox" name="tage" value="Mittwoch"> Mi
+            </label>
+            <label>
+              <input type="checkbox" name="tage" value="Donnerstag"> Do
+            </label>
+            <label>
+              <input type="checkbox" name="tage" value="Freitag"> Fr
+            </label>
+            <label>
+              <input type="checkbox" name="tage" value="Samstag"> Sa
+            </label>
+            <label>
+              <input type="checkbox" name="tage" value="Sonntag"> So
+            </label>
+          </div>
+        </fieldset>
+
+        <label for="moment">
+          Wenn du nur ein Foto machen dürftest – welchen Moment
+          würdest du wählen?
+        </label>
+        <textarea
+          id="moment"
+          name="moment"
+          placeholder="Den entscheidenden Treffer, den Jubel oder etwas ganz anderes?"
+        ></textarea>
+      </section>
+
+      <p class="beschreibung">* Pflichtfelder</p>
+      <button type="submit">Anmeldung absenden ↗</button>
+      <p id="meldung" role="status"></p>
+    </form>
+  </main>
+
+  <footer>SPORTBLICK · Sport durch deine Linse.</footer>
+
+  <script>
+    const formular = document.getElementById("anmeldung");
+    const foto = document.getElementById("foto");
+    const vorschau = document.getElementById("vorschau");
+    const fotoFehler = document.getElementById("foto-fehler");
+    const meldung = document.getElementById("meldung");
+
+    let bildAdresse;
+
+    // Gewähltes Foto prüfen und direkt auf der Seite anzeigen.
+    foto.addEventListener("change", function () {
+      fotoFehler.textContent = "";
+      vorschau.hidden = true;
+      vorschau.removeAttribute("src");
+
+      if (bildAdresse) {
+        URL.revokeObjectURL(bildAdresse);
+        bildAdresse = undefined;
+      }
+
+      const datei = foto.files[0];
+
+      if (!datei) return;
+
+      if (!["image/jpeg", "image/png"].includes(datei.type)) {
+        fotoFehler.textContent = "Bitte wähle eine JPG- oder PNG-Datei.";
+        foto.value = "";
+        return;
+      }
+
+      if (datei.size > 10 * 1024 * 1024) {
+        fotoFehler.textContent = "Das Foto darf maximal 10 MB gross sein.";
+        foto.value = "";
+        return;
+      }
+
+      bildAdresse = URL.createObjectURL(datei);
+      vorschau.src = bildAdresse;
+      vorschau.hidden = false;
+    });
+
+    // Beispiel ohne Server: Eingaben prüfen und eine Meldung anzeigen.
+    formular.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      meldung.textContent =
+        "Deine Eingaben sind gültig. Dies ist eine Demo: " +
+        "Die Anmeldung wurde noch nicht versendet oder gespeichert.";
+    });
+
+    formular.addEventListener("input", function () {
+      meldung.textContent = "";
+    });
+  </script>
 </body>
 </html>
+```
