@@ -1,4 +1,9 @@
-config.php 
+config.php
 .env
-.vscode
-_DS_Store
+.vscode/
+.DS_Store
+/storage/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
